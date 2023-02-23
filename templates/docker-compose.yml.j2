@@ -26,6 +26,20 @@ services:
       - /var/run/docker.sock:/tmp/docker.sock:ro
 {% endif %}
 
+  smokeping:
+    image: lscr.io/linuxserver/smokeping:latest
+    container_name: smokeping
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+    volumes:
+      - ./smoke_ping/config:/config
+      - ./smoke_ping/data:/data
+    ports:
+      - 80:80
+    restart: unless-stopped
+    
   prometheus:
     image: prom/prometheus:v2.25.2
     restart: always
