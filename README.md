@@ -18,6 +18,8 @@ So that's what this is.
 
 ![Pi-hole on the Internet Pi](/images/pi-hole.png)
 
+**Smoke Ping**: Runs Smokeping Docker Image to ping configured targets and track detailed response time data.
+
 ![Smoke Ping on the Internet Pi](/images/smokeping.png)
 
 Other features:
