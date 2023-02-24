@@ -65,6 +65,12 @@ Visit the Pi's IP address with port 3030 (e.g. http://192.168.1.10:3030/), and l
 To find the dashboard, navigate to Dashboards, click Browse, then go to the Internet connection dashboard. If you star this dashboard, it will appear on the Grafana home page.
 
 > Note: The `monitoring_grafana_admin_password` is only used the first time Grafana starts up; if you need to change it later, do it via Grafana's admin UI.
+> 
+> ### SmokePing
+
+Visit the Pi's IP address and with the port 80 (e.g. http://192.168.1.10:80/), This will provide access to the SmokePing webpage.
+
+The Smokeping docker image is https://hub.docker.com/r/linuxserver/smokeping. So refrence this to customize the service.
 
 ### Prometheus
 
