@@ -18,6 +18,8 @@ So that's what this is.
 
 ![Pi-hole on the Internet Pi](/images/pi-hole.png)
 
+![Smoke Ping on the Internet Pi](/images/smokeping.png)
+
 Other features:
 
   - **Shelly Plug Monitoring**: Installs a [`shelly-plug-prometheus` exporter](https://github.com/geerlingguy/shelly-plug-prometheus) and a Grafana dashboard, which tracks and displays power usage on a Shelly Plug running on the local network. (Disabled by default. Enable and configure using the `shelly_plug_*` vars in `config.yml`.)
