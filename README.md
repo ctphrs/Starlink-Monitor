@@ -4,9 +4,7 @@
 
 **A Raspberry Pi Configuration for Internet connectivity**
 
-I have had a couple Pis doing random Internet-related duties for years. It's finally time to formalize their configs and make all the DNS/ad-blocking/monitoring stuff encapsulated into one Ansible project.
-
-So that's what this is.
+This is a fork of geerlinguy's internet pi with a focus on testing the network performance of temporary test networks rather than a home network with users. I have added a smokeping docker image to run and plan to add iPerf support as well, i do not plan on using Pi-hole and might remove it but see no issue with just leaving it disabled in the config for now.
 
 ## Features
 
