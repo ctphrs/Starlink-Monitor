@@ -12,10 +12,6 @@ This is a fork of geerlinguy's internet pi with a focus on testing the network p
 
 ![Internet Monitoring Dashboard in Grafana](/images/internet-monitoring.png)
 
-**Pi-hole**: Installs the Pi-hole Docker configuration so you can use Pi-hole for network-wide ad-blocking and local DNS. Make sure to update your network router config to direct all DNS queries through your Raspberry Pi if you want to use Pi-hole effectively!
-
-![Pi-hole on the Internet Pi](/images/pi-hole.png)
-
 **Smoke Ping**: Runs [Smokeping Docker Image](https://oss.oetiker.ch/smokeping) to ping configured targets and track detailed response time data.
 
 ![Smoke Ping on the Internet Pi](/images/smokeping.png)
@@ -56,10 +52,6 @@ It should also work with Ubuntu for Pi, or Arch Linux, but has not been tested o
 
 ## Usage
 
-### Pi-hole
-
-Visit the Pi's IP address (e.g. http://192.168.1.10/) and use the `pihole_password` you configured in your `config.yml` file. An existing pi-hole installation can be left unaltered by disabling the setup of this proyect's installation in your `config.yml` (`pihole_enable: false`)
-
 ### Grafana
 
 Visit the Pi's IP address with port 3030 (e.g. http://192.168.1.10:3030/), and log in with username `admin` and the password `monitoring_grafana_admin_password` you configured in your `config.yml`.
@@ -98,15 +90,6 @@ prometheus_node_exporter_targets:
 
 ## Updating
 
-### pi-hole
-
-To upgrade Pi-hole to the latest version, run the following commands:
-
-```bash
-cd ~/pi-hole # 
-docker-compose pull             # pulls the latest images
-docker-compose up -d --no-deps  # restarts containers with newer images
-docker system prune --all       # deletes unused images
 ```
 
 ### Configurations and internet-monitoring images
