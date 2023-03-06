@@ -75,12 +75,6 @@ scrape_configs:
     static_configs:
       - targets: {{ prometheus_node_exporter_targets | to_yaml }}
 
-{% if pihole_enable %}
-  - job_name: '{{ pihole_hostname }}'
-    static_configs:
-      - targets: ['{{ pihole_hostname }}:9617']
-{% endif %}
-
 {% filter indent(width=2,first=True) %}
 {{ prometheus_extra_scrape_configs }}
 {% endfilter %}
