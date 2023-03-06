@@ -90,8 +90,6 @@ prometheus_node_exporter_targets:
 
 ## Updating
 
-```
-
 ### Configurations and internet-monitoring images
 
 Upgrades for the other configurations are similar (go into the directory, and run the same `docker-compose` commands. Make sure to `cd` into the `config_dir` that you use in your `config.yml` file. 
