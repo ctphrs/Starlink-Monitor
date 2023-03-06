@@ -111,9 +111,6 @@ cd ~/internet-monitoring
 # Shut down internet-monitoring containers and delete data volumes.
 docker-compose down -v
 
-# Enter the pi-hole directory.
-cd ~/pi-hole
-
 # Shutdown pi-hole containers and delete data volumes.
 docker-compose down -v
 
