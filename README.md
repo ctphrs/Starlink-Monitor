@@ -88,6 +88,69 @@ prometheus_node_exporter_targets:
   - 'another-server.local:9100'
 ```
 
+### Running on Startup
+
+To make an Ansible playbook run on startup on a Raspberry Pi, you can use a combination of systemd and Ansible. Here's a step-by-step guide to accomplish this:
+
+1. **Write Your Ansible Playbook**: Create an Ansible playbook that contains the tasks you want to run on startup. Save this playbook on your Raspberry Pi.
+
+2. **Create a Systemd Service Unit**:
+
+    a. Create a new systemd service unit file. You can use any text editor you prefer, like `nano` or `vim`. For example, let's create a service unit named `my_ansible_playbook.service`:
+
+    ```shell
+    sudo nano /etc/systemd/system/my_ansible_playbook.service
+    ```
+
+    b. Add the following content to the `my_ansible_playbook.service` file, replacing `<PATH_TO_YOUR_PLAYBOOK>` with the actual path to your Ansible playbook:
+
+    ```ini
+    [Unit]
+    Description=Run My Ansible Playbook at Startup
+    After=network.target
+
+    [Service]
+    ExecStart=/usr/bin/ansible-playbook <PATH_TO_YOUR_PLAYBOOK>
+    WorkingDirectory=/path/to/playbook/directory
+    User=<YOUR_USER>
+    Group=<YOUR_GROUP>
+    Restart=always
+
+    [Install]
+    WantedBy=multi-user.target
+    ```
+
+    - `Description`: A description of your service.
+    - `ExecStart`: The command to execute your Ansible playbook.
+    - `WorkingDirectory`: The directory where your playbook is located.
+    - `User` and `Group`: Specify the user and group that should run the playbook (replace `<YOUR_USER>` and `<YOUR_GROUP>` with appropriate values).
+    - `Restart`: Configures the service to restart always.
+
+3. **Reload systemd**: After creating the service unit file, reload the systemd manager configuration:
+
+    ```shell
+    sudo systemctl daemon-reload
+    ```
+
+4. **Enable the Service**: Enable your service to run at startup:
+
+    ```shell
+    sudo systemctl enable my_ansible_playbook.service
+    ```
+
+5. **Start the Service**: Start the service manually to test it:
+
+    ```shell
+    sudo systemctl start my_ansible_playbook.service
+    ```
+
+6. **Reboot the Raspberry Pi**: To ensure that your Ansible playbook runs at startup, reboot your Raspberry Pi and check if the service starts automatically:
+
+    ```shell
+    sudo reboot
+    ```
+
+Your Ansible playbook should now run automatically at startup on your Raspberry Pi. Make sure to replace `<PATH_TO_YOUR_PLAYBOOK>`, `<YOUR_USER>`, and `<YOUR_GROUP>` with your specific playbook path and user/group details.
 ## Updating
 
 ### Configurations and internet-monitoring images
