@@ -151,6 +151,24 @@ To make an Ansible playbook run on startup on a Raspberry Pi, you can use a comb
     ```
 
 Your Ansible playbook should now run automatically at startup on your Raspberry Pi. Make sure to replace `<PATH_TO_YOUR_PLAYBOOK>`, `<YOUR_USER>`, and `<YOUR_GROUP>` with your specific playbook path and user/group details.
+
+### Problems losing IPv4 address
+
+If you have problems where the Pi loses the IPv4 address but still is running and reachable via IPv6 this is an issue with docker on a Raspian and solutions are discussed in [this](https://raspberrypi.stackexchange.com/questions/136320/raspberry-pi-loses-ipv4-address-randomly-but-keeps-ipv6-address) article.
+The short of it though is this.
+
+dhcpcd can be flooded when renewing IP addresses if too many interfaces are present. This is the case when Docker is installed and many containers/networks/services are running. In addition, docker takes care of IP addresses and routing on its virtual network, so DHCPCD doesn't need to handle them.
+
+The solution is to configure dhcpcd to ignore all interfaces whose names start with `veth` (Docker virtual interfaces).
+
+Edit `/etc/dhcpcd.conf` and append the following line to the end
+```
+denyinterfaces veth*
+```
+Then restart the service:
+```bash
+sudo systemctl restart dhcpcd.service
+```
 ## Updating
 
 ### Configurations and internet-monitoring images
