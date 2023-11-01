@@ -57,6 +57,7 @@ services:
     links:
       - ping:ping
       - speedtest:speedtest
+      - openweather-exporter:openweather-exporter
     networks:
       - back-tier
 {% if domain_name_enable and domain_name and domain_prometheus %}
@@ -125,7 +126,7 @@ services:
     ports:
       - 9091:9091
     environment:
-      - OW_CITY=New York, NY
+      - OW_CITY= Norfolk, VA
       - OW_APIKEY=
       - OW_ENABLE_POL=false
       - OW_ENABLE_UV=false
