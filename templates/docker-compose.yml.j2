@@ -126,8 +126,8 @@ services:
     ports:
       - 9091:9091
     environment:
-      - OW_CITY= Norfolk, VA
-      - OW_APIKEY=
+      - OW_CITY={{ openweather_city }}
+      - OW_APIKEY={{ openweathermap_apikey }}
       - OW_ENABLE_POL=false
       - OW_ENABLE_UV=false
     networks:
