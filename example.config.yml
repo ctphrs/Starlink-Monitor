@@ -26,6 +26,10 @@ prometheus_node_exporter_targets:
 prometheus_extra_scrape_configs: ''
 prometheus_tsdb_retention_time: 90d
 
+# Open Weather Map API
+openweather_city: Norfolk, VA
+openweathermap_apikey: 
+
 # Shelly Plug configuration. (Also requires `monitoring_enable`)
 shelly_plug_enable: false
 shelly_plug_hostname: my-shelly-plug-host-or-ip
