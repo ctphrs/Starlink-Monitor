@@ -57,6 +57,7 @@ services:
     links:
       - ping:ping
       - speedtest:speedtest
+      - openweather-exporter:openweather-exporter
     networks:
       - back-tier
 {% if domain_name_enable and domain_name and domain_prometheus %}
@@ -115,7 +116,23 @@ services:
     restart: always
     networks:
       - back-tier
-
+      
+  openweather-exporter:
+    image: billykwooten/openweather-exporter
+    container_name: openweather-exporter
+    restart: always
+    expose:
+      - 9091
+    ports:
+      - 9091:9091
+    environment:
+      - OW_CITY={{ openweather_city }}
+      - OW_APIKEY={{ openweathermap_apikey }}
+      - OW_ENABLE_POL=false
+      - OW_ENABLE_UV=false
+    networks:
+      - back-tier
+      
   nodeexp:
     privileged: true
     image: prom/node-exporter
