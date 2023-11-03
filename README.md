@@ -39,6 +39,7 @@ It should also work with Ubuntu for Pi, or Arch Linux, but has not been tested o
   1. [Install Ansible](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html). The easiest way (especially on Pi or a Debian system) is via Pip:
      1. (If on Pi/Debian): `sudo apt-get install -y python3-pip`
      2. (on Pi/Debian and Everywhere): `pip3 install ansible`
+     3. if that doesn't work just use apt-get to install ansible `sudo apt-get install ansible`
   2. Install Git `sudo apt-get install git` Clone this repository: `git clone https://github.com/ctphrs/Starlink-Monitor.git`, then enter the repository directory: `cd Starlink-Monitor`.
   3. Install requirements: `ansible-galaxy collection install -r requirements.yml` (if you see `ansible-galaxy: command not found`, restart your SSH session or reboot the Pi and try again)
   4. Make copies of the following files and customize them to your liking:
